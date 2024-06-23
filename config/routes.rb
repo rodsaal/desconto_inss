@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   resources :proponentes do
     resource :contato
     resource :endereco
+
+    collection do
+      post 'calcular_inss'
+    end
   end
 
 end

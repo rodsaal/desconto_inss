@@ -59,6 +59,12 @@ class ProponentesController < ApplicationController
     end
   end
 
+  # def calcular_inss
+  #   salario = params[:salario].to_f
+  #   desconto_inss = @proponente.calcular_desconto_inss(salario)
+  #   render json: { desconto_inss: desconto_inss }
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_proponente
@@ -67,7 +73,7 @@ class ProponentesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def proponente_params
-    params.require(:proponente).permit(:nome, :cpf, :data_nascimento, :salario,
+    params.require(:proponente).permit(:nome, :cpf, :data_nascimento, :salario, :desconto_inss,
                                        endereco_attributes: [:id, :logradouro, :numero, :bairro, :cidade, :estado, :cep, :_destroy],
                                        contato_attributes: [:id, :telefone, :email, :_destroy])
   end

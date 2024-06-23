@@ -1,10 +1,10 @@
-<h1>Editing proponente</h1>
+<h1>Editar proponente</h1>
 
 <%= render "form", proponente: @proponente %>
 
 <br>
 
 <div>
-  <%= link_to "Show this proponente", @proponente %> |
-  <%= link_to "Back to proponentes", proponentes_path %>
+  <%= link_to "Visualizar", @proponente, class: 'btn btn-info' %>
+  <%= link_to "Voltar", proponentes_path, class: 'btn btn-secondary' %>
 </div>

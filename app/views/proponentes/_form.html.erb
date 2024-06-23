@@ -25,14 +25,19 @@
       </div>
     </div>
     <div class="row mb-3">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <%= form.label :cpf, 'CPF', class: 'form-label' %>
         <%= form.text_field :cpf, class: 'form-control', id: 'cpf' %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <%= form.label :salario, 'Salário', class: 'form-label' %>
         <%= form.text_field :salario, class: 'form-control', id: 'salario' %>
       </div>
+      <div class="col-md-4">
+        <%= form.label :desconto_inss, 'Desconto INSS', class: 'form-label' %>
+        <%= form.text_field :desconto_inss, class: 'form-control', id: 'desconto_inss_field', disabled: true %>
+      </div>
+
     </div>
   </div>
 
@@ -96,3 +101,30 @@
     </div>
   </div>
 <% end %>
+
+<script>
+    document.addEventListener("turbo:load", function() {
+        $('#salario').on('change', function() {
+            console.log("passando aqui")
+            debugger
+            var salario = $(this).val();  // Pega o valor do campo salário
+            $.ajax({
+                url: '<%= calcular_inss_proponentes_path %>', // Endpoint configurado no seu routes.rb
+                type: 'POST', // Verifique se o método no seu controller aceita POST
+                dataType: 'json', // Espera-se que a resposta seja JSON
+                data: {
+                    salario: salario,
+                    authenticity_token: $('meta[name="csrf-token"]').attr('content') // CSRF token
+                },
+                success: function(response) {
+                    $('#desconto_inss_field').val(response.desconto_inss.toFixed(2)); // Atualiza o campo desconto_inss
+                },
+                error: function(xhr) {
+                    console.error('Erro ao calcular o desconto do INSS:', xhr);
+                }
+            });
+        });
+    });
+</script>
+
+

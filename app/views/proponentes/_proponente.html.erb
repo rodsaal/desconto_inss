@@ -10,9 +10,11 @@
   <td><%= proponente.endereco.cep %></td>
   <td><%= proponente.contato.telefone %></td>
   <td><%= number_to_currency(proponente.salario) %></td>
+  <td><%= number_to_currency(proponente.desconto_inss) %></td>
   <td>
-    <%= link_to 'Show', proponente %>
-    <%= link_to 'Edit', edit_proponente_path(proponente) %>
-    <%= link_to 'Delete', proponente, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Show', proponente, class: 'btn btn-info' %>
+    <%= link_to 'Edit', edit_proponente_path(proponente), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', proponente, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   </td>
+
 </tr>

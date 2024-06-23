@@ -1,10 +1,84 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/proponentes/show.html.erb -->
+<div class="container mt-3">
+  <h3>Detalhes do Proponente</h3>
+  <div class="container bg-light p-3 mb-3">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <strong>Nome:</strong>
+        <%= @proponente.nome %>
+      </div>
+      <div class="col-md-6">
+        <strong>Data de Nascimento:</strong>
+        <%= @proponente.data_nascimento %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <strong>CPF:</strong>
+        <%= @proponente.cpf %>
+      </div>
+      <div class="col-md-4">
+        <strong>Salário:</strong>
+        <%= number_to_currency(@proponente.salario) %>
+      </div>
+      <div class="col-md-4">
+        <strong>Desconto INSS:</strong>
+        <%= number_to_currency(@proponente.desconto_inss) %>
+      </div>
+    </div>
+  </div>
 
-<%= render @proponente %>
+  <h3>Contato</h3>
+  <div class="container bg-light p-3 mb-3">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <strong>Telefone:</strong>
+        <%= @proponente.contato.telefone %>
+      </div>
+      <div class="col-md-6">
+        <strong>Email:</strong>
+        <%= @proponente.contato.email %>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Edit this proponente", edit_proponente_path(@proponente) %> |
-  <%= link_to "Back to proponentes", proponentes_path %>
-
-  <%= button_to "Destroy this proponente", @proponente, method: :delete %>
+  <h3>Endereço</h3>
+  <div class="container bg-light p-3 mb-3">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <strong>Logradouro:</strong>
+        <%= @proponente.endereco.logradouro %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <strong>Número:</strong>
+        <%= @proponente.endereco.numero %>
+      </div>
+      <div class="col-md-4">
+        <strong>Bairro:</strong>
+        <%= @proponente.endereco.bairro %>
+      </div>
+      <div class="col-md-4">
+        <strong>CEP:</strong>
+        <%= @proponente.endereco.cep %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <strong>Cidade:</strong>
+        <%= @proponente.endereco.cidade %>
+      </div>
+      <div class="col-md-6">
+        <strong>Estado:</strong>
+        <%= @proponente.endereco.estado %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Voltar', proponentes_path, class: 'btn btn-secondary' %>
+      <%= link_to 'Editar', edit_proponente_path(@proponente), class: 'btn btn-primary' %>
+    </div>
+  </div>
 </div>
