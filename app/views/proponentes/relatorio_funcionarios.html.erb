@@ -1,0 +1,74 @@
+<!-- app/views/proponentes/relatorio_funcionarios.html.erb -->
+<h3 class="text-center mb-4">Relatório de Funcionários por Faixa Salarial</h3>
+
+<div class="container">
+  <div class="row">
+    <!-- Container para o relatório textual -->
+    <div class="col-md-6">
+      <div class="card text-center mb-3">
+        <div class="card-header">
+          Faixa Salarial: Até R$ 1.045,00
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Quantidade de Funcionários</h5>
+          <p class="card-text"><%= @funcionarios_faixa_1 %></p>
+        </div>
+      </div>
+      <div class="card text-center mb-3">
+        <div class="card-header">
+          Faixa Salarial: De R$ 1.045,01 a R$ 2.089,60
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Quantidade de Funcionários</h5>
+          <p class="card-text"><%= @funcionarios_faixa_2 %></p>
+        </div>
+      </div>
+      <div class="card text-center mb-3">
+        <div class="card-header">
+          Faixa Salarial: De R$ 2.089,61 a R$ 3.134,40
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Quantidade de Funcionários</h5>
+          <p class="card-text"><%= @funcionarios_faixa_3 %></p>
+        </div>
+      </div>
+      <div class="card text-center mb-3">
+        <div class="card-header">
+          Faixa Salarial: De R$ 3.134,41 a R$ 6.101,06
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Quantidade de Funcionários</h5>
+          <p class="card-text"><%= @funcionarios_faixa_4 %></p>
+        </div>
+      </div>
+      <div class="card text-center mb-3">
+        <div class="card-header">
+          Faixa Salarial: Acima de R$ 6.101,06
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Quantidade de Funcionários</h5>
+          <p class="card-text"><%= @funcionarios_faixa_5 %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container para o gráfico -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Gráfico da Distribuição de Funcionários por Faixa Salarial
+        </div>
+        <div class="card-body">
+          <%= pie_chart @data_for_chart, library: {title: {text: 'Funcionários por Faixa', x: -20}}, donut: true, legend: "bottom" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão de retorno ao índice -->
+  <div class="row">
+    <div class="col-md-12 text-center mt-4 mb-4">
+      <%= link_to 'Voltar para o Índice', proponentes_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

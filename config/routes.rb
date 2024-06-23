@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     collection do
       post 'calcular_inss'
+      get 'relatorio' => 'proponentes#relatorio_funcionarios'
     end
   end
 

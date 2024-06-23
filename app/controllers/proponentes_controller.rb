@@ -59,11 +59,21 @@ class ProponentesController < ApplicationController
     end
   end
 
-  # def calcular_inss
-  #   salario = params[:salario].to_f
-  #   desconto_inss = @proponente.calcular_desconto_inss(salario)
-  #   render json: { desconto_inss: desconto_inss }
-  # end
+  def relatorio_funcionarios
+    @funcionarios_faixa_1 = Proponente.where('salario <= ?', 1045.00).count
+    @funcionarios_faixa_2 = Proponente.where('salario > ? AND salario <= ?', 1045.00, 2089.60).count
+    @funcionarios_faixa_3 = Proponente.where('salario > ? AND salario <= ?', 2089.60, 3134.40).count
+    @funcionarios_faixa_4 = Proponente.where('salario > ? AND salario <= ?', 3134.40, 6101.06).count
+    @funcionarios_faixa_5 = Proponente.where('salario > ?', 6101.06).count
+
+    @data_for_chart = {
+      'Até R$ 1.045,00': @funcionarios_faixa_1,
+      'De R$ 1.045,01 a R$ 2.089,60': @funcionarios_faixa_2,
+      'De R$ 2.089,60 a R$ 3134.40': @funcionarios_faixa_3,
+      'De R$ 3134.40 a R$ 6101.06': @funcionarios_faixa_4,
+      'Acima de 6101.06': @funcionarios_faixa_5
+    }
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
