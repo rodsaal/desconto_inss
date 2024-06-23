@@ -1,0 +1,35 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Proponentes</h1>
+
+  <%= link_to "New proponente", new_proponente_path, class: "btn btn-primary", role: "button" %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data de Nascimento</th>
+        <th>Endereço</th>
+        <th>Número</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>CEP</th>
+        <th>Telefone</th>
+        <th>Salário</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @proponentes.each do |proponente| %>
+        <%= render 'proponente', proponente: proponente %>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="pagination-container">
+      <%= paginate @proponentes %>
+    </div>
+  </div>
+</div>

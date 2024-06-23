@@ -1,0 +1,98 @@
+<%= form_with(model: proponente, local: true, html: {class: 'container mt-3'}) do |form| %>
+  <% if proponente.errors.any? %>
+    <div class="alert alert-danger">
+      <% count = proponente.errors.count %>
+      <h2><%= t("errors.header", count: count) %></h2>
+      <ul>
+        <% proponente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Proponente -->
+  <div class="container bg-light p-3 mb-3">
+    <h4>Proponente</h4>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :nome, 'Nome', class: 'form-label' %>
+        <%= form.text_field :nome, class: 'form-control', id: 'nome' %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :data_nascimento, 'Data de Nascimento', class: 'form-label' %>
+        <%= form.text_field :data_nascimento, class: 'form-control', id: 'data_nascimento' %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :cpf, 'CPF', class: 'form-label' %>
+        <%= form.text_field :cpf, class: 'form-control', id: 'cpf' %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :salario, 'Salário', class: 'form-label' %>
+        <%= form.text_field :salario, class: 'form-control', id: 'salario' %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contato -->
+  <div class="container bg-light p-3 mb-3">
+    <h4>Contato</h4>
+    <%= form.fields_for :contato do |contato_fields| %>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <%= contato_fields.label :telefone, 'Telefone', class: 'form-label' %>
+          <%= contato_fields.telephone_field :telefone, class: 'form-control', id: 'telefone' %>
+        </div>
+        <div class="col-md-6">
+          <%= contato_fields.label :email, 'Email', class: 'form-label' %>
+          <%= contato_fields.text_field :email, class: 'form-control', id: 'email' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Endereço -->
+  <div class="container bg-light p-3 mb-3">
+    <h4>Endereço</h4>
+    <%= form.fields_for :endereco do |endereco_fields| %>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <%= endereco_fields.label :logradouro, 'Logradouro', class: 'form-label' %>
+          <%= endereco_fields.text_field :logradouro, class: 'form-control', id: 'logradouro' %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <%= endereco_fields.label :numero, 'Número', class: 'form-label' %>
+          <%= endereco_fields.text_field :numero, class: 'form-control', id: 'numero' %>
+        </div>
+        <div class="col-md-4">
+          <%= endereco_fields.label :bairro, 'Bairro', class: 'form-label' %>
+          <%= endereco_fields.text_field :bairro, class: 'form-control', id: 'bairro' %>
+        </div>
+        <div class="col-md-4">
+          <%= endereco_fields.label :cep, 'CEP', class: 'form-label' %>
+          <%= endereco_fields.text_field :cep, class: 'form-control', id: 'cep' %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <%= endereco_fields.label :cidade, 'Cidade', class: 'form-label' %>
+          <%= endereco_fields.text_field :cidade, class: 'form-control', id: 'cidade' %>
+        </div>
+        <div class="col-md-6">
+          <%= endereco_fields.label :estado, 'Estado', class: 'form-label' %>
+          <%= endereco_fields.text_field :estado, class: 'form-control', id: 'estado' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <%= form.submit "Salvar", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

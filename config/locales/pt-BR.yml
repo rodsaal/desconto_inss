@@ -1,0 +1,12 @@
+pt-BR:
+  errors:
+    header: "%{count} erros ocorreram:"
+  activerecord:
+    models:
+      proponente: "Proponente"
+    errors:
+      models:
+        proponente:
+          attributes:
+            base:
+              custom_error: "um erro customizado aqui"

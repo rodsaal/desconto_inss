@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @proponente %>
+
+<div>
+  <%= link_to "Edit this proponente", edit_proponente_path(@proponente) %> |
+  <%= link_to "Back to proponentes", proponentes_path %>
+
+  <%= button_to "Destroy this proponente", @proponente, method: :delete %>
+</div>
