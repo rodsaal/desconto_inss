@@ -33,3 +33,4 @@ yarn install
 
 # Criar e configurar o banco de dados
 rails db:create db:migrate db:seed
+# desconto_inss
