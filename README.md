@@ -1,24 +1,35 @@
-# README
+# Desconto INSS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto tem por objetivo calcular o desconto de inss dos proponentes criados
 
-Things you may want to cover:
+## Requisitos
 
-* Ruby version
+- Ruby 3.3.0
+- Rails 7.1.3
+- Node.js (última versão estável recomendada)
+- Yarn (última versão estável recomendada)
 
-* System dependencies
+## Configuração inicial
 
-* Configuration
+Antes de iniciar o projeto, certifique-se de ter o Ruby e o Rails instalados na versão especificada. Além disso, você precisará ter o Node.js e o Yarn instalados para gerenciar os pacotes JavaScript.
 
-* Database creation
+### Instalação do Node.js e Yarn
 
-* Database initialization
+Você pode instalar o Node.js e o Yarn seguindo as instruções nos sites oficiais:
 
-* How to run the test suite
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/)
 
-* Services (job queues, cache servers, search engines, etc.)
+### Configurando o projeto
 
-* Deployment instructions
+Após clonar o repositório, execute os seguintes comandos no diretório do projeto para configurar o ambiente de desenvolvimento:
 
-* ...
+```bash
+# Instalar as dependências do Ruby
+bundle install
+
+# Instalar as dependências do JavaScript
+yarn install
+
+# Criar e configurar o banco de dados
+rails db:create db:migrate db:seed
