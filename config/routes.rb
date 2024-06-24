@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'home#index', as: :authenticated_root
+      root 'proponentes#index', as: :authenticated_root
     end
 
     unauthenticated do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   resources :proponentes do
     resource :contato
@@ -22,5 +22,4 @@ Rails.application.routes.draw do
       get 'relatorio' => 'proponentes#relatorio_funcionarios'
     end
   end
-
 end

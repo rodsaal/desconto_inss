@@ -11,8 +11,9 @@ class Proponente < ApplicationRecord
   before_save :calcular_e_salvar_inss
 
   private
+
   def calcular_e_salvar_inss
-    self.desconto_inss = self.class.calcular_desconto_inss(self.salario)
+    self.desconto_inss = self.class.calcular_desconto_inss(salario)
   end
 
   # Método de classe para calcular o INSS
@@ -29,7 +30,7 @@ class Proponente < ApplicationRecord
 
     faixas.each do |faixa|
       if salario_restante > faixa[:limite]
-        desconto = (faixa[:limite] - (faixas.index(faixa) > 0 ? faixas[faixas.index(faixa)-1][:limite] : 0)) * faixa[:aliquota]
+        desconto = (faixa[:limite] - (faixas.index(faixa) > 0 ? faixas[faixas.index(faixa) - 1][:limite] : 0)) * faixa[:aliquota]
         desconto_total += desconto
         salario_restante -= faixa[:limite]
       else

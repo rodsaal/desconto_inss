@@ -1,20 +1,18 @@
 class ContatosController < ApplicationController
   before_action :set_proponente
-  before_action :set_contato, only: [:show, :edit, :update, :destroy]
+  before_action :set_contato, only: %i[show edit update destroy]
 
   def index
     @contatos = @proponente.contatos
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @contato = @proponente.contatos.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @contato = @proponente.contatos.build(contato_params)

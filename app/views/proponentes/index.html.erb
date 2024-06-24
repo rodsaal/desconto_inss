@@ -38,3 +38,5 @@
     <%= link_to 'Relatório de Funcionários', relatorio_proponentes_path, class: 'btn btn-primary' %>
   </div>
 </div>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger', data: { turbo_method: :delete } %>
+

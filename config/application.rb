@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,8 +8,7 @@ Bundler.require(*Rails.groups)
 
 module DescontoInss
   class Application < Rails::Application
-
-    I18n.available_locales = [:en, :pt, :'pt-BR']
+    I18n.available_locales = %i[en pt pt-BR]
 
     # Set default locale to something other than :en
     I18n.default_locale = 'pt-BR'
@@ -19,7 +18,7 @@ module DescontoInss
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #

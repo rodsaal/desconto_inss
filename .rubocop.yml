@@ -1,0 +1,19 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+
+# Configurações específicas do Rails
+Rails:
+  Enabled: true
+
+# Preferências de estilo, por exemplo:
+Layout/LineLength:
+  Max: 120
+
+# Ative e configure outras cops específicas conforme necessário

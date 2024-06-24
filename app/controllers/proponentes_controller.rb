@@ -1,5 +1,6 @@
 class ProponentesController < ApplicationController
-  before_action :set_proponente, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :set_proponente, only: %i[show edit update destroy]
 
   # GET /proponentes or /proponentes.json
   def index
@@ -7,8 +8,7 @@ class ProponentesController < ApplicationController
   end
 
   # GET /proponentes/1 or /proponentes/1.json
-  def show
-  end
+  def show; end
 
   # GET /proponentes/new
   def new
@@ -18,8 +18,7 @@ class ProponentesController < ApplicationController
   end
 
   # GET /proponentes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /proponentes or /proponentes.json
   def create
@@ -40,7 +39,7 @@ class ProponentesController < ApplicationController
   def update
     respond_to do |format|
       if @proponente.update(proponente_params)
-        format.html { redirect_to proponente_url(@proponente), notice: "Proponente alterado com sucesso." }
+        format.html { redirect_to proponente_url(@proponente), notice: 'Proponente alterado com sucesso.' }
         format.json { render :show, status: :ok, location: @proponente }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,13 +53,13 @@ class ProponentesController < ApplicationController
     @proponente.destroy!
 
     respond_to do |format|
-      format.html { redirect_to proponentes_url, notice: "Proponente deletado com sucesso." }
+      format.html { redirect_to proponentes_url, notice: 'Proponente deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
 
   def relatorio_funcionarios
-    @funcionarios_faixa_1 = Proponente.where('salario <= ?', 1045.00).count
+    @funcionarios_faixa_1 = Proponente.where(salario: ..1045.00).count
     @funcionarios_faixa_2 = Proponente.where('salario > ? AND salario <= ?', 1045.00, 2089.60).count
     @funcionarios_faixa_3 = Proponente.where('salario > ? AND salario <= ?', 2089.60, 3134.40).count
     @funcionarios_faixa_4 = Proponente.where('salario > ? AND salario <= ?', 3134.40, 6101.06).count
@@ -76,15 +75,16 @@ class ProponentesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_proponente
-      @proponente = Proponente.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
+  # Use callbacks to share common setup or constraints between actions.
+  def set_proponente
+    @proponente = Proponente.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
   def proponente_params
     params.require(:proponente).permit(:nome, :cpf, :data_nascimento, :salario, :desconto_inss,
-                                       endereco_attributes: [:id, :logradouro, :numero, :bairro, :cidade, :estado, :cep, :_destroy],
-                                       contato_attributes: [:id, :telefone, :email, :_destroy])
+                                       endereco_attributes: %i[id logradouro numero bairro cidade estado cep _destroy],
+                                       contato_attributes: %i[id telefone email _destroy])
   end
 end

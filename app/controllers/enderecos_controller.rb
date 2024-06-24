@@ -1,20 +1,18 @@
 class EnderecosController < ApplicationController
   before_action :set_proponente
-  before_action :set_endereco, only: [:show, :edit, :update, :destroy]
+  before_action :set_endereco, only: %i[show edit update destroy]
 
   def index
     @enderecos = @proponente.enderecos
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @endereco = @proponente.enderecos.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @endereco = @proponente.enderecos.build(endereco_params)
